@@ -54,6 +54,6 @@ const styles = StyleSheet.create({
   botonTexto: {
     color: '#fff',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: 'bld',
   },
 });
