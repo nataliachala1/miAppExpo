@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Text, View } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import Dropdown from '../components/Dropdown';
 import styles from '../styles/DropdownStyles';
 
 export default function DropdownScreen() {
@@ -10,19 +10,17 @@ export default function DropdownScreen() {
     <View style={styles.container}>
       <Text style={styles.titulo}>Parte 3 - Dropdown</Text>
 
-      <View style={styles.pickerContainer}>
-        <Picker
-          selectedValue={seleccionado}
-          onValueChange={(valor) => setSeleccionado(valor)}
-          style={styles.picker}
-        >
-          <Picker.Item label="Selecciona una opción..." value="" />
-          <Picker.Item label="🍎 Manzana" value="Manzana" />
-          <Picker.Item label="🍌 Banano" value="Banano" />
-          <Picker.Item label="🍇 Uvas" value="Uvas" />
-          <Picker.Item label="🍓 Fresa" value="Fresa" />
-        </Picker>
-      </View>
+      <Dropdown
+        selectedValue={seleccionado}
+        onValueChange={(valor) => setSeleccionado(valor)}
+        options={[
+          { label: 'Selecciona una opción...', value: '' },
+          { label: '🍎 Manzana', value: 'Manzana' },
+          { label: '🍌 Banano', value: 'Banano' },
+          { label: '🍇 Uvas', value: 'Uvas' },
+          { label: '🍓 Fresa', value: 'Fresa' },
+        ]}
+      />
 
       {seleccionado !== '' && (
         <Text style={styles.resultado}>

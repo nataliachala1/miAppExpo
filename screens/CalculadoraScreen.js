@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Text, View } from 'react-native';
 import styles from '../styles/CalculatorStyles';
 import { TouchableOpacity } from 'react-native';
+import CalcButton from '../components/CalcButton';
 
 export default function CalculadoraScreen() {
   const [pantalla, setPantalla] = useState('0');
@@ -48,19 +49,7 @@ export default function CalculadoraScreen() {
     setNuevaEntrada(false);
   };
 
-  const Boton = ({ texto, onPress, tipo }) => (
-    <TouchableOpacity
-      style={[
-        styles.boton,
-        tipo === 'operacion' && styles.botonOperacion,
-        tipo === 'igual' && styles.botonIgual,
-        tipo === 'limpiar' && styles.botonLimpiar,
-      ]}
-      onPress={onPress}
-    >
-      <Text style={styles.botonTexto}>{texto}</Text>
-    </TouchableOpacity>
-  );
+  // Use reusable CalcButton component
 
   return (
     <View style={styles.container}>
@@ -76,32 +65,32 @@ export default function CalculadoraScreen() {
       </View>
 
       <View style={styles.teclado}>
+          <View style={styles.fila}>
+            <CalcButton texto="C" onPress={limpiar} tipo="limpiar" />
+            <CalcButton texto="÷" onPress={() => presionarOperacion('÷')} tipo="operacion" />
+            <CalcButton texto="×" onPress={() => presionarOperacion('×')} tipo="operacion" />
+            <CalcButton texto="-" onPress={() => presionarOperacion('-')} tipo="operacion" />
+          </View>
         <View style={styles.fila}>
-          <Boton texto="C" onPress={limpiar} tipo="limpiar" />
-          <Boton texto="÷" onPress={() => presionarOperacion('÷')} tipo="operacion" />
-          <Boton texto="×" onPress={() => presionarOperacion('×')} tipo="operacion" />
-          <Boton texto="-" onPress={() => presionarOperacion('-')} tipo="operacion" />
+          <CalcButton texto="7" onPress={() => presionarNumero('7')} />
+          <CalcButton texto="8" onPress={() => presionarNumero('8')} />
+          <CalcButton texto="9" onPress={() => presionarNumero('9')} />
+          <CalcButton texto="+" onPress={() => presionarOperacion('+')} tipo="operacion" />
         </View>
         <View style={styles.fila}>
-          <Boton texto="7" onPress={() => presionarNumero('7')} />
-          <Boton texto="8" onPress={() => presionarNumero('8')} />
-          <Boton texto="9" onPress={() => presionarNumero('9')} />
-          <Boton texto="+" onPress={() => presionarOperacion('+')} tipo="operacion" />
+          <CalcButton texto="4" onPress={() => presionarNumero('4')} />
+          <CalcButton texto="5" onPress={() => presionarNumero('5')} />
+          <CalcButton texto="6" onPress={() => presionarNumero('6')} />
         </View>
         <View style={styles.fila}>
-          <Boton texto="4" onPress={() => presionarNumero('4')} />
-          <Boton texto="5" onPress={() => presionarNumero('5')} />
-          <Boton texto="6" onPress={() => presionarNumero('6')} />
+          <CalcButton texto="1" onPress={() => presionarNumero('1')} />
+          <CalcButton texto="2" onPress={() => presionarNumero('2')} />
+          <CalcButton texto="3" onPress={() => presionarNumero('3')} />
         </View>
         <View style={styles.fila}>
-          <Boton texto="1" onPress={() => presionarNumero('1')} />
-          <Boton texto="2" onPress={() => presionarNumero('2')} />
-          <Boton texto="3" onPress={() => presionarNumero('3')} />
-        </View>
-        <View style={styles.fila}>
-          <Boton texto="0" onPress={() => presionarNumero('0')} />
-          <Boton texto="." onPress={() => presionarNumero('.')} />
-          <Boton texto="=" onPress={calcular} tipo="igual" />
+          <CalcButton texto="0" onPress={() => presionarNumero('0')} />
+          <CalcButton texto="." onPress={() => presionarNumero('.')} />
+          <CalcButton texto="=" onPress={calcular} tipo="igual" />
         </View>
       </View>
     </View>

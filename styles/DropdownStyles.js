@@ -23,7 +23,6 @@ export default StyleSheet.create({
   },
   picker: {
     width: '100%',
-    height: 54,
   },
   resultado: {
     marginTop: 24,
