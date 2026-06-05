@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import styles from '../styles/HomeStyles';
 
+//Aquí se define la pantalla principal de la aplicación, muestra cada bóton con su respectivo color y nombre. Al presionar cada botón, se navega a la pantalla correspondiente utilizando la función navigation.navigate() con el nombre de la ruta definida en el navegador de stack.
 export default function HomeScreen({ navigation }) {
   const secciones = [
     { nombre: 'Parte 1 - Botones', ruta: 'Botones', color: '#3498db' },
@@ -9,6 +11,10 @@ export default function HomeScreen({ navigation }) {
     { nombre: 'Parte 5 - Scroll', ruta: 'Scroll', color: '#e74c3c' },
   ];
 
+  //Aqui el map recorre el array y por cada elemento crea un botón automaticamente
+  //Key es un identificador unico para cada elemento del array.
+  //backgroundColor: s color, toma el color definido en el array.
+  //El array navigation.navigate(s.ruta) lleva al usuario a la pantalla correspondiente. 
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Taller Móvil</Text>
@@ -25,35 +31,3 @@ export default function HomeScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 14,
-  },
-  titulo: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 6,
-  },
-  subtitulo: {
-    fontSize: 15,
-    color: '#777',
-    marginBottom: 16,
-  },
-  boton: {
-    paddingVertical: 14,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    width: 260,
-    alignItems: 'center',
-  },
-  botonTexto: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bld',
-  },
-});
